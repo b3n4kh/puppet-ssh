@@ -1,3 +1,6 @@
+#### 2015-09-22 - 1.0.4
+* Forked and added new config @motd
+
 #### 2015-05-20 - 1.0.3
 * Update rhel7 sshd_config to match the current 7.1 one.
 * Tested on Puppet 4.0.0.
@@ -32,4 +35,3 @@
 
 #### 2013-10-02 - 0.1.0
 * Initial module release.
-
