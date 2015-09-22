@@ -19,6 +19,7 @@ class ssh::sshd_config (
   $clientaliveinterval             = undef,
   $clientalivecountmax             = undef,
   $usedns                          = undef,
+  $printmotd                       = undef,
   $bannerpath                      = undef,
   $match                           = undef,
   $internalsftp                    = false,
