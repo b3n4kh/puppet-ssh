@@ -1,5 +1,7 @@
 #### 2015-09-22 - 1.0.4
 * Forked and added new config @motd
+* Fix hash ordering consistency for sshd_config match.
+* Include rspec tests.
 
 #### 2015-05-20 - 1.0.3
 * Update rhel7 sshd_config to match the current 7.1 one.
