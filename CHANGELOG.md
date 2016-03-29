@@ -1,7 +1,16 @@
-#### 2015-09-22 - 1.0.4
-* Forked and added new config @motd
+
+#### 2016-02-05 - 1.0.5-ben
+* Remerged with upstream
+
+#### 2016-02-05 - 1.0.5
+* Added authorizedkeyscommand and authorizedkeyscommanduser options (@scrat14)
+
+#### 2016-02-01 - 1.0.4
 * Fix hash ordering consistency for sshd_config match.
 * Include rspec tests.
+
+#### 2015-09-22 - 1.0.3-ben
+* Forked and added new config @motd
 
 #### 2015-05-20 - 1.0.3
 * Update rhel7 sshd_config to match the current 7.1 one.

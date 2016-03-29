@@ -1,7 +1,7 @@
 {
-  "name": "ben-ssh",
-  "version": "1.0.4",
-  "author": "Benjamin Akhras",
+  "name": "thias-ssh",
+  "version": "1.0.5",
+  "author": "Matthias Saou",
   "license": "Apache-2.0",
   "summary": "SSH module",
   "source": "https://github.com/thias/puppet-ssh",
