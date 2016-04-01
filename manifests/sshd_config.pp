@@ -24,6 +24,7 @@ class ssh::sshd_config (
   $match                           = undef,
   $authorizedkeyscommand           = undef,
   $authorizedkeyscommanduser       = undef,
+  $allowgroups                     = undef,
   $internalsftp                    = false,
   $template_dir                    = $::ssh::params::template_dir,
   $service_name                    = $::ssh::params::service_name,

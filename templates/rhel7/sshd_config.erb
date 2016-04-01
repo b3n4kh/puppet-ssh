@@ -111,6 +111,12 @@ Subsystem	sftp	internal-sftp
 Subsystem	sftp	/usr/libexec/openssh/sftp-server
 <% end -%>
 
+<% if @allowgroups -%>
+AllowGroups <%= @allowgroups %>
+<% else -%>
+#AllowGroups none
+<% end -%>
+
 <% if @match -%>
 # Overridden settings
 <% @match.sort_by {|k,v| k}.each do |key,value| -%>
