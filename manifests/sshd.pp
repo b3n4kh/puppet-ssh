@@ -1,4 +1,4 @@
-# Class: ssh::sshd_config
+# Class: ssh::sshd
 #
 # Class to manage the main sshd_config file.
 #
@@ -6,13 +6,13 @@
 # defaults are used.
 #
 # Sample Usage :
-#     include '::ssh::sshd_config'
+#     create_resources('::ssh::sshd', $confighash)
 #
-class ssh::sshd_config (
+define ssh::sshd (
   $port                            = undef,
   $permitrootlogin                 = undef,
   $pubkeyauthentication            = undef,
-  $passwordauthentication          = undef,
+  $passwordauthentication          = 'no',
   $challengeresponseauthentication = undef,
   $usepam                          = undef,
   $x11forwarding                   = undef,
@@ -26,11 +26,9 @@ class ssh::sshd_config (
   $authorizedkeyscommanduser       = undef,
   $allowgroups                     = undef,
   $internalsftp                    = false,
-  $template_dir                    = $::ssh::params::template_dir,
-  $service_name                    = $::ssh::params::service_name,
+  $template_dir                    = 'rhel7',
+  $service_name                    = 'sshd',
 ) inherits ::ssh::params {
-
-  include '::ssh::service'
 
   file { '/etc/ssh/sshd_config':
     owner   => 'root',
