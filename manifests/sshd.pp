@@ -28,7 +28,7 @@ define ssh::sshd (
   $internalsftp                    = false,
   $template_dir                    = 'rhel7',
   $service_name                    = 'sshd',
-) inherits ::ssh::params {
+) {
 
   file { '/etc/ssh/sshd_config':
     owner   => 'root',
