@@ -6,10 +6,36 @@ Port <%= @port %>
 #ListenAddress 0.0.0.0
 #ListenAddress ::
 
+# The default requires explicit activation of protocol 1
+<% if @protocol -%>
+Protocol <%= @protocol %>
+<% else -%>
+#Protocol 2
+<% end -%>
+
+# HostKey for protocol version 1
+#HostKey /etc/ssh/ssh_host_key
+# HostKeys for protocol version 2
 HostKey /etc/ssh/ssh_host_rsa_key
 HostKey /etc/ssh/ssh_host_ecdsa_key
 HostKey /etc/ssh/ssh_host_ed25519_key
 
+# Lifetime and size of ephemeral version 1 server key
+#KeyRegenerationInterval 1h
+#ServerKeyBits 1024
+
+# Ciphers and keying
+<% if @ciphers -%>
+Ciphers <%= @ciphers %>
+<% end -%>
+<% if @macs -%>
+MACs <%= @macs %>
+<% end -%>
+#RekeyLimit default none
+
+# Logging
+# obsoletes QuietMode and FascistLogging
+#SyslogFacility AUTH
 SyslogFacility AUTHPRIV
 
 <% if @permitrootlogin -%>
@@ -52,7 +78,11 @@ AuthorizedKeysCommandUser <%= @authorizedkeyscommanduser %>
 
 # To disable tunneled clear text passwords, change to no here!
 #PasswordAuthentication yes
+<% if @permitemptypasswords -%>
+PermitEmptyPasswords <%= @permitemptypasswords %>
+<% else -%>
 #PermitEmptyPasswords no
+<% end -%>
 <% if @passwordauthentication -%>
 PasswordAuthentication <%= @passwordauthentication %>
 <% else -%>
@@ -82,6 +112,21 @@ X11Forwarding yes
 PrintMotd <%= @printmotd %>
 <% end -%>
 UsePrivilegeSeparation sandbox
+
+#X11DisplayOffset 10
+#X11UseLocalhost yes
+#PermitTTY yes
+#PrintMotd yes
+#PrintLastLog yes
+#TCPKeepAlive yes
+#UseLogin no
+UsePrivilegeSeparation sandbox		# Default for new installations.
+<% if @permituserenvironment -%>
+PermitUserEnvironment <%= @permituserenvironment %>
+<% else -%>
+#PermitUserEnvironment no
+<% end -%>
+#Compression delayed
 <% if @clientaliveinterval -%>
 ClientAliveInterval <%= @clientaliveinterval %>
 <% end -%>

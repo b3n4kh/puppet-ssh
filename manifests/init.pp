@@ -1,4 +1,4 @@
-# Class: ssh
+# Class: ssh::sshd
 #
 # Class to manage the main sshd_config file.
 #
@@ -6,16 +6,42 @@
 # defaults are used.
 #
 # Sample Usage :
-#     include '::ssh'
+#     include '::ssh::sshd'
 #
 class ssh (
-  $config_hash      = {},
-  $template_dir     = $::ssh::params::template_dir,
-  $service_name     = $::ssh::params::service_name,
-) inherits ::ssh::params {
+  $port                            = undef,
+  $protocol                        = undef,
+  $ciphers                         = undef,
+  $macs                            = undef,
+  $permitrootlogin                 = undef,
+  $pubkeyauthentication            = undef,
+  $permitemptypasswords            = undef,
+  $passwordauthentication          = undef,
+  $challengeresponseauthentication = undef,
+  $usepam                          = undef,
+  $x11forwarding                   = undef,
+  $permituserenvironment           = undef,
+  $clientaliveinterval             = undef,
+  $clientalivecountmax             = undef,
+  $usedns                          = undef,
+  $bannerpath                      = undef,
+  $match                           = {},
+  $authorizedkeyscommand           = undef,
+  $authorizedkeyscommanduser       = undef,
+  $allowgroups                     = undef,
+  $internalsftp                    = false,
+  $template_dir                    = 'rhel7',
+  $service_name                    = 'sshd',
+) {
 
   include '::ssh::service'
 
-  create_resources('::ssh::sshd', $config_hash)
+  file { '/etc/ssh/sshd_config':
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0600',
+    content => template("${module_name}/${template_dir}/sshd_config.erb"),
+    notify  => Service[$service_name],
+  }
 
 }

@@ -1,3 +1,13 @@
+#### 2016-02-05 - 1.0.7-ben
+* Remerged with upstream
+
+#### 2016-05-31 - 1.0.7
+* Update Gemfile to fix travis-ci tests with ruby 1.8.
+* Update metadata for newer Puppet compatibility.
+
+#### 2016-05-31 - 1.0.6
+* Remove Gentoo support, unused by me now, and nobody else uses it.
+* Add parameters to meet the SCAP ospp-rhel7-server profile (#5, @roysjosh).
 
 #### 2016-02-05 - 1.0.5-ben
 * Remerged with upstream
@@ -8,9 +18,6 @@
 #### 2016-02-01 - 1.0.4
 * Fix hash ordering consistency for sshd_config match.
 * Include rspec tests.
-
-#### 2015-09-22 - 1.0.3-ben
-* Forked and added new config @motd
 
 #### 2015-05-20 - 1.0.3
 * Update rhel7 sshd_config to match the current 7.1 one.
@@ -46,3 +53,4 @@
 
 #### 2013-10-02 - 0.1.0
 * Initial module release.
+
